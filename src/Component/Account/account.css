@@ -1,0 +1,101 @@
+.alert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 10vw;
+}
+
+.account{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    height: 92vh;
+}
+
+.accountLeft {
+    background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vmax;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.accountRight {
+    padding: 2vmax;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+}
+
+.accountRight > div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 1vmax;
+}
+
+.accountRight > div > button {
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: all 0.5s;
+    padding: 0.5vmax 1vmax;
+}
+
+.accountRight img {
+    transition: all 0.5s;
+}
+
+.accountRight img:hover {
+    transform: scale(1.1);
+}
+
+.accountRight > h5 {
+    margin: 2vmax;
+}
+
+.accountRight > a {
+    color: rgb(73, 73, 73);
+    text-decoration: none;
+    font: 100 1.2rem "Roboto";
+    text-align: center;
+    margin-top: 2vmax;
+    padding: 0.5vmax 1vmax;
+    transition: all 0.5s;
+}
+
+.accountRight > a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+}
+
+.accountRight > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vmax;
+}
+
+
+
+
+
+@media screen and (max-width: 600px){
+
+    .account{
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .accountLeft{
+        padding: 0;
+        min-height: 90vh;
+    }
+
+    .accountLeft > a {
+        font: 100 1rem "Roboto";
+        margin-top: 6vw;
+    }
+}
