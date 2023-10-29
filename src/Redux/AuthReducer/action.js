@@ -92,9 +92,6 @@ export const handleLogin = (email,password) => async(dispatch) => {
         let response = await axios.post('http://localhost:8080/user/login', { email, password });
         let token = response.data.token;
         localStorage.setItem("token",token);
-        console.log(localStorage.getItem("token"));
-        console.log(response.data);
-
         dispatch(handleAuthSuccess(response.data)); 
 
     } catch (error) {

@@ -4,8 +4,9 @@ import User from '../User/User'
 import Post from '../Post/Post'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPost } from '../../Redux/PostReducer/action'
-import { Typography} from '@mui/material'
+import { Button, Typography} from '@mui/material'
 import { getAllUsers } from '../../Redux/UserReducer/action'
+import { Link } from 'react-router-dom'
 
 
 
@@ -15,11 +16,11 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllPost());
-    dispatch(getAllUsers());
+    //dispatch(getAllUsers());
   }, [dispatch])
 
   const posts = useSelector((state) => state.postReducer.postOfUsers)
-  const allUsers = useSelector((state) => state.userReducer.allUsers)
+  const allUsers = useSelector((state) => state.authReducer.isUser?.following)
 
   return (
     <div className='home'>
@@ -46,6 +47,7 @@ const Home = () => {
 
 
       <div className="homeright">
+        <Typography variant='h6'>{ allUsers == 0 ? "" : "My Friends"}</Typography>
         {allUsers && allUsers.length > 0 ? (
           allUsers.map((user, idx) =>
             <User
@@ -55,7 +57,11 @@ const Home = () => {
               avatar={user.avatar.url} />
           )
         ) : (
-          <Typography variant='h6'>No user found</Typography>
+          <div>
+            <Typography variant='h6'>You have no friends Yet</Typography>
+
+            <Link to='/find-friends'><Button>Find Friends</Button></Link>
+          </div>
         )}
 
       </div>

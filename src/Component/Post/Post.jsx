@@ -35,7 +35,7 @@ const Post = ({
     const [likesUser, setLikesUser] = useState(false);
     const [comment, setComment] = useState("");
     const [commentBox, setCommentBox] = useState(false);
-    const userId = useSelector((state => state.authReducer.isUser._id));
+    const userId = useSelector((state => state.authReducer.isUser?._id));
 
 
     const dispatch = useDispatch();
@@ -140,9 +140,9 @@ const Post = ({
                     display: 'flex'
                 }}
                 onClick={() => setLikesUser(true)}
-                disabled={likes.length === 0}
+                disabled={likes?.length === 0}
             >
-                <Typography>{`${likes.length} Likes`}</Typography>
+                <Typography>{`${likes?.length} Likes`}</Typography>
             </button>
 
 
@@ -166,12 +166,12 @@ const Post = ({
             <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
                 <div className="DialogBox">
                     <Typography variant='h4'>Liked by</Typography>
-                    {likes.map((user, idx) =>
+                    {likes?.map((user, idx) =>
                         <User
                             key={idx}
-                            userId={user._id}
-                            name={user.name}
-                            avatar={user.avatar.url} />
+                            userId={user?._id}
+                            name={user?.name}
+                            avatar={user?.avatar?.url} />
                     )
                     }
                 </div>
@@ -186,8 +186,8 @@ const Post = ({
                         <input
                             type="text"
                             value={comment}
-                            onChange={(e) => setComment(e.target.value)}
-                            placeholder='Comment here....'
+                            onChange={(e) => setComment(e?.target?.value)}
+                            placeholder='Comment here...'
                             required
                         />
 
@@ -195,15 +195,15 @@ const Post = ({
                             Add
                         </Button>
                     </form>
-                    {commentsOnPost.length > 0 ? (
-                        commentsOnPost.map((user, idx) =>
+                    {commentsOnPost?.length > 0 ? (
+                        commentsOnPost?.map((user, idx) =>
                             <Comment
                                 key={idx}
-                                userId={user.user._id}
-                                name={user.user.name}
-                                avatar={user.user.avatar.url}
-                                comment={user.comment}
-                                commentId={user._id}
+                                userId={user?.user?._id}
+                                name={user?.user?.name}
+                                avatar={user?.user?.avatar?.url}
+                                comment={user?.comment}
+                                commentId={user?._id}
                                 postId={postId}
                                 isAccount={isAccount}
                             />

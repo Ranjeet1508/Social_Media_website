@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './account.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteMyAccount, getMyPost } from '../../Redux/AccountReducer/action'
-import { CircularProgress, Alert, AlertTitle, Typography, Avatar, Button, Dialog } from '@mui/material'
+import { CircularProgress, Alert, AlertTitle, Typography, Avatar, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import Post from '../Post/Post'
 import User from '../User/User'
 import { Link, useNavigate } from 'react-router-dom'
@@ -27,21 +27,32 @@ const Account = () => {
 
     const [followBox, setFollowBox] = useState(false);
     const [followingBox, setFollowingBox] = useState(false);
+    const [deleteAccountBox, setDeleteAccountBox] = useState(false);
 
-    const handleLogout = () => {
-        dispatch(logoutMe())
+
+
+    const handleLogout = async () => {
+        await dispatch(logoutMe())
         setTimeout(() => {
             navigate('/')
         }, 2000)
     }
 
     const handleDeleteAccount = async () => {
-        console.log('deleting Account...')
-        dispatch(deleteMyAccount());
+        setDeleteAccountBox(true);        
+    }
+
+    const handleConfirmDelete = async() => {
+        await dispatch(deleteMyAccount());
         dispatch(logoutMe());
         setTimeout(() => {
             navigate('/')
         }, 2000)
+        setDeleteAccountBox(false)
+    }
+
+    const handleCloseConfirmation = () => {
+        setDeleteAccountBox(false);
     }
 
     useEffect(() => {
@@ -121,13 +132,19 @@ const Account = () => {
                 <div>
                     <Button variant='contained' onClick={handleLogout}>Logout</Button>
                 </div>
-                <Link to='/editProfile'>Edit Profile</Link>
-                <Link to='/updatePassword'>Change Password</Link>
 
                 <div>
-                    <Button variant='text' style={{ color: 'red', margin: '2vmax' }} onClick={handleDeleteAccount}>
+                    <Link to='/editProfile'><Button>Edit Profile</Button></Link>
+                </div>
+
+                <div>
+                    <Link to='/updatePassword'><Button>Change Password</Button></Link>
+                </div>
+
+                <div>
+                    <Button style={{ color: 'red', margin: '2vmax', background:'white' }} onClick={handleDeleteAccount} variant='contained'>
                         Delete My Profile
-                    </Button>
+                    </Button>                   
                 </div>
             </div>
 
@@ -138,8 +155,8 @@ const Account = () => {
                         user.follower.map((user, idx) =>
                             <User
                                 key={idx}
-                                userId={user._id}
-                                name={user.name}
+                                userId={user?._id}
+                                name={user?.name}
                                 avatar={user?.avatar?.url} />
                         )
                     ) : (
@@ -156,8 +173,8 @@ const Account = () => {
                         user.following.map((user, idx) =>
                             <User
                                 key={idx}
-                                userId={user._id}
-                                name={user.name}
+                                userId={user?._id}
+                                name={user?.name}
                                 avatar={user?.avatar?.url} />
                         )
                     ) : (
@@ -165,6 +182,21 @@ const Account = () => {
                     )
                     }
                 </div>
+            </Dialog>
+
+            <Dialog open={deleteAccountBox} onClose={() => setDeleteAccountBox(false)}>
+                <DialogTitle>Confirmation</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>Are you sure you want to delete your account?</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseConfirmation} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleConfirmDelete} color="primary">
+                        Delete
+                    </Button>
+                </DialogActions>
             </Dialog>
         </div>
     )

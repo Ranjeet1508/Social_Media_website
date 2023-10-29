@@ -38,9 +38,9 @@
     border: 3px solid rgb(255, 201, 201);
 }
 
-.homeUser:hover{
+/* .homeUser:hover{
     transform: translateY(-10px);
-}
+} */
 
 
 @media screen and (max-width: 600px) {

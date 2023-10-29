@@ -4,6 +4,7 @@ import AllRoute from './Component/AllRoutes/AllRoute';
 import Header from './Component/Header/Header';
 import { useEffect } from 'react';
 import { loadUser } from './Redux/AuthReducer/action';
+import { getAllUsers } from './Redux/UserReducer/action';
 
 function App() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function App() {
   useEffect(() => {
     if(window.performance.navigation.type===1){
       dispatch(loadUser())
+      dispatch(getAllUsers())
     }
   },[])
 

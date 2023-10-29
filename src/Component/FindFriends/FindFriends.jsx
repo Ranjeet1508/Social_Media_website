@@ -3,6 +3,7 @@ import './findFriends.css'
 import { Button, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import User from '../User/User'
+import { Link } from 'react-router-dom'
 
 const FindFriends = () => {
     
@@ -16,7 +17,7 @@ const FindFriends = () => {
             <div className="allUsers">
                 {allUsers && allUsers.length > 0 ? (
                     allUsers.map((user, idx) => {
-                        return <div className='userBox'>
+                        return <div className='userBox' key={idx}>
                             <User
                               key={idx}
                               userId={user._id}
@@ -24,7 +25,11 @@ const FindFriends = () => {
                               avatar={user.avatar.url}
                             />
   
-                            <Button>View Full Profile</Button>
+                            <Link to={`user/${user._id}`}>
+                                <Button>
+                                View Full Profile
+                                </Button>
+                            </Link>
                         </div> 
                     }
                        

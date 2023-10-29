@@ -1,43 +1,51 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import './comment.css'
+import { Link } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
-import { deleteComment, getAllPost,} from '../../Redux/PostReducer/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteComment, getAllPost, } from '../../Redux/PostReducer/action';
+import { getMyPost } from '../../Redux/AccountReducer/action';
 
 const Comment = ({ userId, avatar, name, comment, commentId, postId, isAccount }) => {
 
-
     const dispatch = useDispatch();
-    
+    const loggedInUserId = useSelector((state => state.authReducer.isUser?._id))
+
     const deleteCommenthandler = () => {
         dispatch(deleteComment(postId, commentId));
         if (isAccount) {
-            console.log(`bring my post `);
+            dispatch(getMyPost())
         }
         else {
             dispatch(getAllPost());
         }
     }
     return (
-        <>
-            <Link to={`/user/${userId}`} className='commenter'>
-                <img src={avatar} alt={name} />
-            </Link>
+        <div className='userComment'>
+            <div>
+                <Link to={`/user/${userId}`} className='commenter'>
+                    <img src={avatar} alt={name} />
+                </Link>
+            </div>
+            
+            <div className='name'>
+                <Typography>@{name} -</Typography>
+            </div>
 
-                <Box>
-                    <Typography>@{name}</Typography>
-                    
-                    <Typography>{comment} </Typography>
-                    <Button style={{color:"red"}} onClick={deleteCommenthandler}> <Delete/> </Button>
-                    
-                </Box>
-                
-            
+            <div className='comment'>
+                <Typography>{comment} </Typography>     
+            </div>
+
+            <Button style={{ color: "red" }} onClick={deleteCommenthandler}>{(userId===loggedInUserId || isAccount) ? <Delete /> : ""}</Button>
 
             
-            
-        </>
+
+
+
+
+
+        </div>
     )
 }
 

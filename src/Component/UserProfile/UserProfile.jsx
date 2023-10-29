@@ -5,31 +5,39 @@ import { getMyPost } from '../../Redux/AccountReducer/action'
 import { CircularProgress, Alert, AlertTitle, Typography, Avatar, Button, Dialog } from '@mui/material'
 import Post from '../Post/Post'
 import User from '../User/User'
-import { Link, useNavigate } from 'react-router-dom'
-
-
-
-
-
+import { Link, useParams } from 'react-router-dom'
+import { followUnfollowUser, singleUser } from '../../Redux/SingleUserReducer/action'
+import { loadUser } from '../../Redux/AuthReducer/action'
 
 
 const UserProfile = () => {
 
-    const isLoading = useSelector((state => state.myPostReducer.isLoading))
-    const isError = useSelector((state => state.myPostReducer.isError))
-    const myPosts = useSelector((state => state.myPostReducer.myPosts))
-    const user = useSelector((state => state.authReducer.isUser))
-    const navigate = useNavigate();
-
     const dispatch = useDispatch();
+    const isLoading = useSelector((state => state.singleUserReducer.isLoading))
+    const isError = useSelector((state => state.singleUserReducer.isError))
+    const followLoading = useSelector((state => state.singleUserReducer.followLoading))
+    const followError = useSelector((state => state.singleUserReducer.followError))
+    const user = useSelector((state => state.singleUserReducer.singleUser))
+    const myPosts = user?.posts;
+    const loggedInUser = useSelector((state => state.authReducer.isUser))
+    const { id } = useParams();
+    const followStatus = (user?.follower)?.find(follower => follower?._id === loggedInUser?._id)
+
 
     const [followBox, setFollowBox] = useState(false);
     const [followingBox, setFollowingBox] = useState(false);
 
 
+    const hanldeFollow = async() => {
+        await dispatch(followUnfollowUser(id))
+        dispatch(singleUser(id))
+        dispatch(loadUser())
+    }
+
+
     useEffect(() => {
-        dispatch(getMyPost())
-    }, [])
+        dispatch(singleUser(id))
+    }, [dispatch])
 
 
 
@@ -46,22 +54,21 @@ const UserProfile = () => {
         </div>
     ) : (
         <div className='account'>
-
             <div className="accountLeft">
                 {myPosts && myPosts.length > 0 ? (
                     myPosts.map((post, idx) =>
                         <Post
                             key={idx}
-                            postImage={post.image.url}
-                            caption={post.caption}
-                            postId={post._id}
-                            likes={post.likes}
+                            postImage={post?.image?.url}
+                            caption={post?.caption}
+                            postId={post?._id}
+                            likes={post?.likes}
                             commentsOnPost={post.comments}
-                            ownerImage={post.owner.avatar.url}
-                            ownerName={post.owner.name}
-                            ownerId={post.owner._id}
-                            isAccount={true}
-                            isDelete={true}
+                            ownerImage={post?.owner?.avatar?.url}
+                            ownerName={post?.owner?.name}
+                            ownerId={post?.owner?._id}
+                            isAccount={false}
+                            isDelete={false}
                         />
                     ))
                     : (
@@ -101,7 +108,7 @@ const UserProfile = () => {
                     <Typography>{user?.posts?.length}</Typography>
 
                     <div className="followbtn">
-                        <Button>Follow</Button>
+                        <Button onClick={hanldeFollow}>{followStatus ? "Following" : "Follow"}</Button>
                     </div>
                 </div>
             </div>
@@ -113,8 +120,8 @@ const UserProfile = () => {
                         user.follower.map((user, idx) =>
                             <User
                                 key={idx}
-                                userId={user._id}
-                                name={user.name}
+                                userId={user?._id}
+                                name={user?.name}
                                 avatar={user?.avatar?.url} />
                         )
                     ) : (
@@ -131,12 +138,12 @@ const UserProfile = () => {
                         user.following.map((user, idx) =>
                             <User
                                 key={idx}
-                                userId={user._id}
-                                name={user.name}
+                                userId={user?._id}
+                                name={user?.name}
                                 avatar={user?.avatar?.url} />
                         )
                     ) : (
-                        <Typography style={{ margin: "2vmax" }}>`${user.name} is not following anyone`</Typography>
+                        <Typography style={{ margin: "2vmax" }}>`${user?.name} is not following anyone`</Typography>
                     )
                     }
                 </div>

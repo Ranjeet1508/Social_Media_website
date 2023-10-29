@@ -22,7 +22,8 @@ const AllRoute = () => {
       <Route path='/editProfile'  element={<EditProfile/>} />
       <Route path='/updatePassword'  element={<UpdatePassword/>} />
       <Route path='/user/:id'  element={<UserProfile/>} />
-      {/* <Route path='/forgot/password'  element={<forgotpassword/>} />
+      <Route path='find-friends/user/:id'  element={<UserProfile/>} />
+      {/* <Route path='/forgot/password'  element={<forgotpassword/>} >
        */}
     </Routes>
   )
