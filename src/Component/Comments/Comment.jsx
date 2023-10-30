@@ -12,8 +12,9 @@ const Comment = ({ userId, avatar, name, comment, commentId, postId, isAccount }
     const dispatch = useDispatch();
     const loggedInUserId = useSelector((state => state.authReducer.isUser?._id))
 
-    const deleteCommenthandler = () => {
-        dispatch(deleteComment(postId, commentId));
+    const deleteCommenthandler = async() => {
+        console.log(commentId)
+        await dispatch(deleteComment(postId, commentId));
         if (isAccount) {
             dispatch(getMyPost())
         }

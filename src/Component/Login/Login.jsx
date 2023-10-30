@@ -29,7 +29,10 @@ const Login = () => {
           }
           else {
             setLogin("Wrong Credentials \n Or \n User doesn't exist")
-            setPassword("");
+            setTimeout(() => {
+                setPassword("");
+                setLogin("");
+            },2000)
           }
         }
       }, [isAuth, navigate]);

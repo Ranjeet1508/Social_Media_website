@@ -131,3 +131,31 @@ export const deleteMyAccount = () => async(dispatch) => {
         console.log(error);
     }
 }
+
+export const forgetPassword = (email) => async(dispatch) => {
+    try {
+        let data = {
+            email: email
+        }
+        let response = await axios.post(`http://localhost:8080/user/forgotPassword`, data);
+        console.log(response.data)
+        console.log("sent Successfully");
+    } catch (error) {
+        console.log("cant send ")
+        console.log(error);
+    }
+}
+
+export const resetPassword = (token, password) => async(dispatch) => {
+    try {
+        let data = {
+            password: password
+        }
+        let response = await axios.post(`http://localhost:8080/user/resetPassword/${token}`, data);
+        console.log("Password Reset Successfully");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+

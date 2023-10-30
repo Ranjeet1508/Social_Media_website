@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     if(window.performance.navigation.type===1){
       dispatch(loadUser())
-      dispatch(getAllUsers())
     }
   },[])
 

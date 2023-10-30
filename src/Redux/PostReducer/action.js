@@ -138,7 +138,7 @@ export const deleteComment = (postId, commentId) => async(dispatch) => {
         let response = axios.delete(`http://localhost:8080/comment/delete/${postId}?commentId=${commentId}`, config);
         console.log(response.data);
         dispatch(deleteCommentSuccess());
-        console.log("comment deleted successfully")
+
     } catch (error) {
         console.log(error)
     }

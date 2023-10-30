@@ -9,6 +9,8 @@ import EditProfile from '../EditProfile/EditProfile'
 import UpdatePassword from '../UpdatePassword/UpdatePassword'
 import FindFriends from '../FindFriends/FindFriends'
 import UserProfile from '../UserProfile/UserProfile'
+import ForgetPassword from '../ForgetPassword/ForgetPassword'
+import ResetPassword from '../ResetPassword/ResetPassword'
 
 const AllRoute = () => {
   return (
@@ -23,8 +25,9 @@ const AllRoute = () => {
       <Route path='/updatePassword'  element={<UpdatePassword/>} />
       <Route path='/user/:id'  element={<UserProfile/>} />
       <Route path='find-friends/user/:id'  element={<UserProfile/>} />
-      {/* <Route path='/forgot/password'  element={<forgotpassword/>} >
-       */}
+      <Route path='/forgot/password'  element={<ForgetPassword/>} />
+      <Route path='/resetPassword/:token'  element={<ResetPassword/>} />
+       
     </Routes>
   )
 }
