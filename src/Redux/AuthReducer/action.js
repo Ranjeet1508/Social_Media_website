@@ -89,7 +89,7 @@ export const handleLogoutFailure = () => {
 export const handleLogin = (email,password) => async(dispatch) => {
     try {
         dispatch(handleAuthRequest());
-        let response = await axios.post('http://localhost:8080/user/login', { email, password });
+        let response = await axios.post('https://tasty-fez-goat.cyclic.app/user/login', { email, password });
         let token = response.data.token;
         localStorage.setItem("token",token);
         dispatch(handleAuthSuccess(response.data)); 
@@ -109,7 +109,7 @@ export const loadUser = () => async(dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.get(`http://localhost:8080/user/me`, config);
+        const response = await axios.get(`https://tasty-fez-goat.cyclic.app/user/me`, config);
         console.log(response.data);
         dispatch(handleLoadUserSuccess(response.data))
     } catch (error) {
@@ -132,7 +132,7 @@ export const logoutMe = () => async(dispatch) => {
 export const signupUser = (name, email, password, avatar) => async(dispatch) => {
     try {
         dispatch(handleSignupRequest());
-        let response = await axios.post(`http://localhost:8080/user/signup`,{
+        let response = await axios.post(`https://tasty-fez-goat.cyclic.app/user/signup`,{
             name,
             email,
             password,

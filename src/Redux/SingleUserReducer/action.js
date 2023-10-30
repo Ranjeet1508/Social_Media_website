@@ -58,7 +58,7 @@ export const singleUser = (id) => async(dispatch) => {
             }
         }
         dispatch(getSingleUserRequest())
-        let response = await axios.get(`http://localhost:8080/user/findUser/${id}`, config)
+        let response = await axios.get(`https://tasty-fez-goat.cyclic.app/user/findUser/${id}`, config)
         console.log(response.data)
         dispatch(getSingleUserSuccess(response.data.user))
     } catch (error) {
@@ -77,7 +77,7 @@ export const followUnfollowUser = (id) => async(dispatch) => {
             }
         }
         followUserRequest()
-        let response = await axios.get(`http://localhost:8080/follow/${id}`, config)
+        let response = await axios.get(`https://tasty-fez-goat.cyclic.app/follow/${id}`, config)
         followUserSuccess(response.data.message);
     } catch (error) {
         followUserFailure();
