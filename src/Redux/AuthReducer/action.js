@@ -142,8 +142,8 @@ export const signupUser = (name, email, password, avatar) => async(dispatch) => 
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response.data.message)
-        dispatch(handleSignupSuccess(response.data.message))
+        console.log(response.data)
+        dispatch(handleSignupSuccess(response.data))
     } catch (error) {
         dispatch(handleSignupFailure())
         console.log(error)
