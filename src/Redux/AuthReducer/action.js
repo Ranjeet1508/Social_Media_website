@@ -135,7 +135,7 @@ export const signupUser = (name, email, password, avatar) => async(dispatch) => 
         let response = await axios.post(`https://tasty-fez-goat.cyclic.app/user/signup`,{
             name,
             email,
-            password,
+            password,         
             avatar
         }, {
             headers: {

@@ -22,10 +22,10 @@ const Signup = () => {
 
         const Reader = new FileReader();
         Reader.readAsDataURL(file);
-
+    
         Reader.onload = () => {
             if (Reader.readyState === 2) {
-                setAvatar(Reader.result)
+                setAvatar(Reader.result)             
             }
         }
     }
