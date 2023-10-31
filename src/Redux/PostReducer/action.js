@@ -63,7 +63,7 @@ export const getAllPost = () => async (dispatch) => {
             }
         };
         dispatch(getPostLoading());
-        const response = await axios.get('https://brainy-crab-rugby-shirt.cyclic.app/post/allPost', config);
+        const response = await axios.get('http://localhost:8080/post/allPost', config);
         dispatch(getPostSuccess(response.data.posts))
     } catch (error) {
         dispatch(getPostFailure());
@@ -81,7 +81,7 @@ export const likeUnlikePost = (id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.get(`https://brainy-crab-rugby-shirt.cyclic.app/post/like_Unlike/${id}`, config);
+        const response = await axios.get(`http://localhost:8080/post/like_Unlike/${id}`, config);
         dispatch(getLikeUnlike(response.data.posts));
     } catch (error) {
         console.log(error)
@@ -97,7 +97,7 @@ export const getallComments = (postId) => async(dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        let response = await axios.get(`https://brainy-crab-rugby-shirt.cyclic.app/comment/${postId}`, config);
+        let response = await axios.get(`http://localhost:8080/comment/${postId}`, config);
         console.log(response.data);
         dispatch(getCommentsOfPost(response.data.comments));
     } catch (error) {
@@ -117,7 +117,7 @@ export const addCommentsOnPost = (id, comment) => async(dispatch) => {
         const data = {
             comment: comment,
         };
-        let response = await axios.put(`https://brainy-crab-rugby-shirt.cyclic.app/comment/add/${id}`, data, config);
+        let response = await axios.put(`http://localhost:8080/comment/add/${id}`, data, config);
         console.log(response.data)
     } catch (error) {
         console.log(error);
@@ -135,7 +135,7 @@ export const deleteComment = (postId, commentId) => async(dispatch) => {
             }
         }
         
-        let response = axios.delete(`https://brainy-crab-rugby-shirt.cyclic.app/comment/delete/${postId}?commentId=${commentId}`, config);
+        let response = axios.delete(`http://localhost:8080/comment/delete/${postId}?commentId=${commentId}`, config);
         console.log(response.data);
         dispatch(deleteCommentSuccess());
 

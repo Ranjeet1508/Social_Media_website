@@ -69,7 +69,7 @@ export const getAllUsers = () => async(dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.get('https://brainy-crab-rugby-shirt.cyclic.app/user/allUser', config);
+        const response = await axios.get('http://localhost:8080/user/allUser', config);
         dispatch(getUserSuccess(response.data));
     } catch (error) {
         console.log(error);
@@ -92,7 +92,7 @@ export const updateUserProfile = (name, email, avatar) => async(dispatch) => {
             avatar: avatar
         }
         dispatch(updateUserProfileLoading());
-        const response = await axios.post('https://brainy-crab-rugby-shirt.cyclic.app/user/updateProfile', data, config);
+        const response = await axios.post('http://localhost:8080/user/updateProfile', data, config);
         dispatch(updateUserProfileSuccess(response.data.message))
     } catch (error) {
         dispatch(updateUserProfileFailure())
@@ -114,7 +114,7 @@ export const updatePassword = (oldPassword, newPassword) => async(dispatch) => {
             newPassword: newPassword
         }
         dispatch(updatePasswordLoading());
-        const response = await axios.post('https://brainy-crab-rugby-shirt.cyclic.app/user/updatePassword', data, config);
+        const response = await axios.post('http://localhost:8080/user/updatePassword', data, config);
         console.log(response.data)
         dispatch(updatePasswordSuccess(response.data.message))
     } catch (error) {
