@@ -1,9 +1,7 @@
-
 .header{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 
@@ -24,6 +22,8 @@
     transform: scale(1.2);
 }
 
+
+
 @media screen and (max-width: 600px){
     .header > a{
         width: 8vw;
@@ -32,6 +32,8 @@
     }
 
     .header > a > svg {
-        font-size: 8vw;
+        font-size: 5vw;
     }
+  
 }
+

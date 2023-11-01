@@ -10,16 +10,23 @@ import {
     Search,
     AccountCircleOutlined,
     AccountCircle,
+    People,
+    PeopleOutlined
 }
     from '@mui/icons-material'
-
-const Header = () => {
+import { Hidden } from '@mui/material';
+const Header = () => {                
     const [tab, setTab] = useState(window.location.pathname)
     return (
         <div className='header'>
             <RouterLink to='/home' onClick={() => setTab('/home')}>
                 {tab === '/home' ? <Home style={{ color: "black" }} /> : <HomeOutlined />}
             </RouterLink>
+            <Hidden smUp>
+            <RouterLink to='/my-friends' onClick={() => setTab('/my-friends')}>
+                {tab === '/my-friends' ? <People style={{ color: "black" }} /> : <PeopleOutlined/>}
+            </RouterLink>
+            </Hidden>
             <RouterLink to='/newPost' onClick={() => setTab('/newPost')}>
                 {tab === '/newPost' ? <Add style={{ color: "black" }} /> : <AddOutlined />}
             </RouterLink>

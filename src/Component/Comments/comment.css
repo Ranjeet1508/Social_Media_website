@@ -1,12 +1,4 @@
 .userComment{
     display: flex;
-    align-items: center;
 }
 
-.name {
-    margin-left: -0.5vw;
-}
-
-.comment {
-    margin-left: 1vw;
-}

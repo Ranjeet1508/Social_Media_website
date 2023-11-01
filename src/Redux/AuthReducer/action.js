@@ -149,3 +149,4 @@ export const signupUser = (name, email, password, avatar) => async(dispatch) => 
         console.log(error)
     }
 }
+//

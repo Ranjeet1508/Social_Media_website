@@ -5,7 +5,6 @@ import Post from '../Post/Post'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPost } from '../../Redux/PostReducer/action'
 import { Button, Typography} from '@mui/material'
-import { getAllUsers } from '../../Redux/UserReducer/action'
 import { Link } from 'react-router-dom'
 
 
@@ -16,7 +15,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllPost());
-    //dispatch(getAllUsers());
   }, [dispatch])
 
   const posts = useSelector((state) => state.postReducer.postOfUsers)
@@ -35,7 +33,7 @@ const Home = () => {
               likes={post.likes}
               commentsOnPost={post.comments}
               ownerImage={post.owner.avatar.url}
-              ownerName={post.owner.name}
+              ownerName={post.owner.name}           
               ownerId={post.owner._id}
               isAccount={false}
               isDelete={false}

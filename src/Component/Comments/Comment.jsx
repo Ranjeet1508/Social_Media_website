@@ -18,7 +18,7 @@ const Comment = ({ userId, avatar, name, comment, commentId, postId, isAccount }
         if (isAccount) {
             dispatch(getMyPost())
         }
-        else {
+        else {           
             dispatch(getAllPost());
         }
     }
@@ -31,20 +31,13 @@ const Comment = ({ userId, avatar, name, comment, commentId, postId, isAccount }
             </div>
             
             <div className='name'>
-                <Typography>@{name} -</Typography>
+                <Typography>@{name} </Typography>
+                <Typography>{comment} </Typography>  
             </div>
-
-            <div className='comment'>
-                <Typography>{comment} </Typography>     
-            </div>
-
-            <Button style={{ color: "red" }} onClick={deleteCommenthandler}>{(userId===loggedInUserId || isAccount) ? <Delete /> : ""}</Button>
 
             
 
-
-
-
+            <Button style={{ color: "red", marginLeft:'20px'}} onClick={deleteCommenthandler}>{(userId===loggedInUserId || isAccount) ? <Delete /> : ""}</Button>
 
         </div>
     )

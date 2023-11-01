@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
-import './findFriends.css'
+import '../FindFriends/findFriends.css'
 import { Button, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import User from '../User/User'
 import { Link } from 'react-router-dom'
-import { getAllUsers } from '../../Redux/UserReducer/action'
+import { loadUser } from '../../Redux/AuthReducer/action'
 
-const FindFriends = () => {
+const MyFriends = () => {
     
     const dispatch = useDispatch();
-    const allUsers = useSelector((state) => state.userReducer.allUsers)
+    const allUsers = useSelector((state) => state.authReducer.isUser?.following)
 
     useEffect(() => {
-        dispatch(getAllUsers())
-    },[])          
+        dispatch(loadUser())
+    },[])
 
     return (
         <div className='findFriends'>
-            <div className='searchBar'>
-                <input type="text" placeholder='Search...' />
-            </div>
+            <Typography variant='h4'>My Friends</Typography>
             <div className="allUsers">
                 {allUsers && allUsers.length > 0 ? (
                     allUsers.map((user, idx) => {
@@ -49,4 +47,4 @@ const FindFriends = () => {
     )
 }
 
-export default FindFriends
+export default MyFriends

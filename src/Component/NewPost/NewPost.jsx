@@ -4,12 +4,12 @@ import { Button, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPost } from '../../Redux/AccountReducer/action';
 
-
+                   
 const NewPost = () => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState("");
     const dispatch = useDispatch();
-    const uploadMsg = useSelector((state => state.myPostReducer.uploadMsg))
+    const [uploadMsg, setUploadMsg] = useState("")
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -24,12 +24,15 @@ const NewPost = () => {
         }
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault();
-        dispatch(uploadPost(caption, image))
+        setUploadMsg("uploading...")
+        await dispatch(uploadPost(caption, image))
+        setUploadMsg("uploaded successfully")
         setTimeout(() => {
             setImage(null);
             setCaption("");
+            setUploadMsg("");
         },5000)
     }
 

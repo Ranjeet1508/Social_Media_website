@@ -11,6 +11,7 @@ import FindFriends from '../FindFriends/FindFriends'
 import UserProfile from '../UserProfile/UserProfile'
 import ForgetPassword from '../ForgetPassword/ForgetPassword'
 import ResetPassword from '../ResetPassword/ResetPassword'
+import MyFriends from '../MyFriends/MyFriends'
 
 const AllRoute = () => {
   return (
@@ -18,6 +19,7 @@ const AllRoute = () => {
       <Route path='/' element={<Login/>} />
       <Route path='/home' element={<Home/>} />
       <Route path='/find-friends'  element={<FindFriends/>} />
+      <Route path='/my-friends'  element={<MyFriends/>} />
       <Route path='/newPost'  element={<NewPost/>} />
       <Route path='/account'  element={<Account/>} />
       <Route path='/signup'  element={<Signup/>} />

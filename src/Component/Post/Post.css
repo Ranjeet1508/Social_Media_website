@@ -30,7 +30,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
 }
 
 .postDetails{
@@ -67,7 +66,7 @@
 
 .DialogBox{
     min-width: 500px;
-    height: 100vh;
+    height: 70vh;
     padding: 2vmax;
 }
 
@@ -97,10 +96,31 @@
         box-shadow: none;
         border: 1px solid rgba(0, 0, 0, 0.068);
         padding: 0 0 4vw;
-        margin: 0;
+        margin: 2rem 0;
+    }
+
+    .postImage{
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    .postImage > img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 
     .postFooter > button > svg {
         font-size: 8vw;
+    }
+
+    .DialogBox{
+        min-width: 300px;
+        height: 70vh;
+        padding: 2vmax;
+    }
+    
+    .commentForm > input {
+        font: 100 2vmax "Roboto", sans-serif;
     }
 }

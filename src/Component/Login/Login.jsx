@@ -13,29 +13,31 @@ const Login = () => {
     const navigate = useNavigate();
 
     let isAuth = useSelector((state) => state.authReducer.isAuth)
+    let isLoading = useSelector((state) => state.authReducer.isLoading)
+    let isError = useSelector((state) => state.authReducer.isError)
 
-    const loginHandler = (e) => {
+    const loginHandler = async(e) => {
         e.preventDefault();
-        dispatch(handleLogin(email,password))                 
+        await dispatch(handleLogin(email,password))   
+        if(isError){
+            setLogin("Wrong Credentials \n Or \n User doesn't exist")
+            setTimeout(() => {
+                setPassword("");
+                setLogin("");
+            },2000)
+        }              
     }
 
     useEffect(() => {
-        if (isAuth !== null) {
+        if (isAuth !== null) {   
           if (isAuth) {
             setLogin('Login Successful');
             setTimeout(() => {
               navigate('/home');
             }, 2000);
           }
-          else {
-            setLogin("Wrong Credentials \n Or \n User doesn't exist")
-            setTimeout(() => {
-                setPassword("");
-                setLogin("");
-            },2000)
-          }
         }
-      }, [isAuth, navigate]);
+      }, [isAuth, isError]);
     
     return (
         <div className='login'>
