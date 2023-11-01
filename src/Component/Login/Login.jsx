@@ -42,8 +42,8 @@ const Login = () => {
     return (
         <div className='login'>
             <form className='loginForm' onSubmit={loginHandler}>
-                <Typography variant='h4' style={{ padding: "2vmax" }}>
-                    100 gram
+                <Typography variant='h5' style={{ padding: "2vmax" }}>
+                    Login
                 </Typography>
 
                 <input 

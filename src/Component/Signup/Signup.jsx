@@ -58,8 +58,8 @@ const Signup = () => {
 
 
             <form className="signupForm" onSubmit={handleSignup}>
-                <Typography variant='h4' style={{ padding: "2vmax" }}>
-                    100 gram
+                <Typography variant='h5' style={{ padding: "2vmax" }}>
+                    Signup
                 </Typography>
 
                 <Avatar src={avatar} alt='user' />
