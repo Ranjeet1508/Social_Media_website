@@ -12,7 +12,6 @@
 .signupForm {
     background-color: white;
     width: 50%;
-    height: 100vh;
     border-radius: 30px;
     box-sizing: border-box;
     padding: 2vmax;
@@ -71,13 +70,14 @@
     
     .signupForm > input {
         padding: 4vw 8vw;
-        font: 100 1rem "Roboto", sans-serif;
-        margin: 2vw;
+        margin: 2vmax;
+        font: 100 1.2rem "Roboto", sans-serif;
+        margin: 4vw;
     }
     
     
     .signupForm > input[type='file'] {
-        width: 100%;
+        width: 100%; 
     }
     
     
