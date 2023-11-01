@@ -13,7 +13,7 @@ const FindFriends = () => {
 
     useEffect(() => {
         dispatch(getAllUsers())
-    },[])          
+    },[dispatch])          
 
     return (
         <div className='findFriends'>

@@ -9,7 +9,7 @@
 .account{
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 3fr 1fr;
     height: 92vh;
 }
 
@@ -98,4 +98,5 @@
         font: 100 1rem "Roboto";
         margin-top: 6vw;
     }
+
 }

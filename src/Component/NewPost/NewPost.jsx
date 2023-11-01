@@ -3,6 +3,7 @@ import './newpost.css'
 import { Button, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPost } from '../../Redux/AccountReducer/action';
+import { loadUser } from '../../Redux/AuthReducer/action';
 
                    
 const NewPost = () => {
@@ -33,7 +34,8 @@ const NewPost = () => {
             setImage(null);
             setCaption("");
             setUploadMsg("");
-        },5000)
+            dispatch(loadUser())
+        },3000)
     }
 
     return (

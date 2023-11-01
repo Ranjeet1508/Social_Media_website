@@ -47,7 +47,7 @@ const Post = ({
             if (isAccount) {
                 await dispatch(getMyPost())
             }
-            else {
+            else if(!isAccount){
                 await dispatch(getAllPost());
             }
         } catch (error) {

@@ -13,7 +13,7 @@ function App() {
     if(window.performance.navigation.type===1){
       dispatch(loadUser())
     }
-  },[])
+  },[dispatch])
 
 
 

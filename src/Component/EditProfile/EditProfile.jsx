@@ -54,6 +54,7 @@ const EditProfile = () => {
                 navigate('/account')
             }, 3000)
         }
+        
     }, [updateUserError, updateUserSuccess, dispatch])
 
 

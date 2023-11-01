@@ -6,12 +6,7 @@ import { CircularProgress, Alert, AlertTitle, Typography, Avatar, Button, Dialog
 import Post from '../Post/Post'
 import User from '../User/User'
 import { Link, useNavigate } from 'react-router-dom'
-import { logoutMe } from '../../Redux/AuthReducer/action'
-// import Alert from '@mui/material';
-// import AlertTitle from '@mui/material';
-
-
-
+import { loadUser, logoutMe } from '../../Redux/AuthReducer/action'
 
 
 
@@ -57,7 +52,8 @@ const Account = () => {
 
     useEffect(() => {
         dispatch(getMyPost())
-    }, [])
+        dispatch(loadUser())
+    }, [dispatch])
 
 
 
@@ -143,7 +139,7 @@ const Account = () => {
 
                 <div>
                     <Button style={{ color: 'red', margin: '2vmax', background:'white' }} onClick={handleDeleteAccount} variant='contained'>
-                        Delete My Profile
+                        Delete Account
                     </Button>                   
                 </div>
             </div>
