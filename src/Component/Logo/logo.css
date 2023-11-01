@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Nanum+Gothic&family=Poppins&family=Ysabeau:wght@200&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 50px;
+}
+
+h1{
+
+    color: transparent;
+    font-size: 4vw;
+    font-family: 'Agbalumo', sans-serif;
+    font-weight: 200;
+    background-image: url('https://res.cloudinary.com/du1wrpcx1/image/upload/v1698827431/newaiellogo_g6xfvh.jpg');
+    background-size: 100% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+
+
+@media screen and (max-width:600px) {
+    h1{
+        font-size: 6vw;
+    }
+}

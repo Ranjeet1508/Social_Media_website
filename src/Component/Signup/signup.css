@@ -12,6 +12,7 @@
 .signupForm {
     background-color: white;
     width: 50%;
+    height: 100vh;
     border-radius: 30px;
     box-sizing: border-box;
     padding: 2vmax;
@@ -60,15 +61,18 @@
 
 @media screen and (max-width: 600px){
 
+    .signup{
+        padding: 1vmax;
+    }
+
     .signupForm {
         width: 100%;
     }
     
     .signupForm > input {
         padding: 4vw 8vw;
-        margin: 2vmax;
-        font: 100 1.2rem "Roboto", sans-serif;
-        margin: 4vw;
+        font: 100 1rem "Roboto", sans-serif;
+        margin: 2vw;
     }
     
     

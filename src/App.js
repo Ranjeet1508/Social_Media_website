@@ -5,6 +5,7 @@ import Header from './Component/Header/Header';
 import { useEffect } from 'react';
 import { loadUser } from './Redux/AuthReducer/action';
 import { getAllUsers } from './Redux/UserReducer/action';
+import Logo from './Component/Logo/Logo';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <Logo />
       {isAuth && <Header />} 
       <AllRoute/>
     </div>
