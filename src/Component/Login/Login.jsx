@@ -34,6 +34,7 @@ const Login = () => {
     useEffect(() => {
         if (isAuth !== null) {   
           if (isAuth) {
+            setLoginMsg("");
             setLogin('Login Successful');
             setTimeout(() => {
               navigate('/home');
