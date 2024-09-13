@@ -89,7 +89,7 @@ export const handleLogoutFailure = () => {
 export const handleLogin = (email,password) => async(dispatch) => {
     try {
         dispatch(handleAuthRequest());
-        let response = await axios.post('https://new-social-media-backend.vercel.app/user/login', { email, password });
+        let response = await axios.post('https://social-media-backend-orpin-ten.vercel.app/user/login', { email, password });
         let token = response.data.token;
         localStorage.setItem("token",token);
         dispatch(handleAuthSuccess(response.data)); 
@@ -109,7 +109,7 @@ export const loadUser = () => async(dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.get(`https://new-social-media-backend.vercel.app/user/me`, config);
+        const response = await axios.get(`https://social-media-backend-orpin-ten.vercel.app/user/me`, config);
         console.log(response.data);
         dispatch(handleLoadUserSuccess(response.data))
     } catch (error) {
@@ -132,7 +132,7 @@ export const logoutMe = () => async(dispatch) => {
 export const signupUser = (name, email, password, avatar) => async(dispatch) => {
     try {
         dispatch(handleSignupRequest());
-        let response = await axios.post(`https://new-social-media-backend.vercel.app/user/signup`,{
+        let response = await axios.post(`https://social-media-backend-orpin-ten.vercel.app/user/signup`,{
             name,
             email,
             password,         
