@@ -69,7 +69,7 @@ export const getAllUsers = () => async(dispatch) => {
                 Authorization: `Bearer ${token}`
             }
         };
-        const response = await axios.get('https://new-social-media-backend.vercel.app/user/allUser', config);
+        const response = await axios.get('https://social-media-backend-orpin-ten.vercel.app/user/allUser', config);
         dispatch(getUserSuccess(response.data));
     } catch (error) {
         console.log(error);
@@ -92,7 +92,7 @@ export const updateUserProfile = (name, email, avatar) => async(dispatch) => {
             avatar: avatar
         }
         dispatch(updateUserProfileLoading());
-        const response = await axios.post('https://new-social-media-backend.vercel.app/user/updateProfile', data, config);
+        const response = await axios.post('https://social-media-backend-orpin-ten.vercel.app/user/updateProfile', data, config);
         dispatch(updateUserProfileSuccess(response.data.message))
     } catch (error) {
         dispatch(updateUserProfileFailure())
@@ -114,7 +114,7 @@ export const updatePassword = (oldPassword, newPassword) => async(dispatch) => {
             newPassword: newPassword
         }
         dispatch(updatePasswordLoading());
-        const response = await axios.post('https://new-social-media-backend.vercel.app/user/updatePassword', data, config);
+        const response = await axios.post('https://social-media-backend-orpin-ten.vercel.app/user/updatePassword', data, config);
         console.log(response.data)
         dispatch(updatePasswordSuccess(response.data.message))
     } catch (error) {
