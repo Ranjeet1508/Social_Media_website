@@ -58,7 +58,7 @@ export const singleUser = (id) => async(dispatch) => {
             }
         }
         dispatch(getSingleUserRequest())
-        let response = await axios.get(`https://new-social-media-backend.vercel.app/user/findUser/${id}`, config)
+        let response = await axios.get(`https://social-media-backend-orpin-ten.vercel.app/user/findUser/${id}`, config)
         console.log(response.data)
         dispatch(getSingleUserSuccess(response.data.user))
     } catch (error) {
@@ -77,7 +77,7 @@ export const followUnfollowUser = (id) => async(dispatch) => {
             }
         }
         followUserRequest()
-        let response = await axios.get(`https://new-social-media-backend.vercel.app/follow/${id}`, config)
+        let response = await axios.get(`https://social-media-backend-orpin-ten.vercel.app/follow/${id}`, config)
         followUserSuccess(response.data.message);
     } catch (error) {
         followUserFailure();
