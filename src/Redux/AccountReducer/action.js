@@ -59,7 +59,7 @@ export const getMyPost = () => async(dispatch) => {
             }
         }
         dispatch(myPostRequest());
-        let response = await axios.get(`https://new-social-media-backend.vercel.app/post/myAllPost`, config);
+        let response = await axios.get(`https://social-media-backend-orpin-ten.vercel.app/post/myAllPost`, config);
         dispatch(myPostSuccess(response.data.posts));
     } catch (error) {
         dispatch(myPostFailure());
@@ -86,7 +86,7 @@ export const uploadPost = (caption, image) => async (dispatch) => {
             image: image
         }
         dispatch(uploadPostLoading())
-        const response = await axios.post('https://new-social-media-backend.vercel.app/post/upload', data, config);
+        const response = await axios.post('https://social-media-backend-orpin-ten.vercel.app/post/upload', data, config);
         console.log(response.data);
         dispatch(uploadPostSuccess(response.data));
      
@@ -107,7 +107,7 @@ export const deleteMyPost = (id) => async(dispatch) => {
                'Content-Type': 'application/json'
             }
         }
-        let response = await axios.delete(`https://new-social-media-backend.vercel.app/post/delete/${id}`, config);
+        let response = await axios.delete(`https://social-media-backend-orpin-ten.vercel.app/post/delete/${id}`, config);
         console.log(response.data)
         deletePostSuccess();
     } catch (error) {
@@ -125,7 +125,7 @@ export const deleteMyAccount = () => async(dispatch) => {
                'Content-Type': 'application/json'
             }
         }
-        let response = await axios.delete(`https://new-social-media-backend.vercel.app/user/deleteAccount`, config);
+        let response = await axios.delete(`https://social-media-backend-orpin-ten.vercel.app/user/deleteAccount`, config);
         console.log(response.data)
     } catch (error) {
         console.log(error);
@@ -137,7 +137,7 @@ export const forgetPassword = (email) => async(dispatch) => {
         let data = {
             email: email
         }
-        let response = await axios.post(`https://new-social-media-backend.vercel.app/user/forgotPassword`, data);
+        let response = await axios.post(`https://social-media-backend-orpin-ten.vercel.app/user/forgotPassword`, data);
         console.log(response.data)
         console.log("sent Successfully");
     } catch (error) {
@@ -151,7 +151,7 @@ export const resetPassword = (token, password) => async(dispatch) => {
         let data = {
             password: password
         }
-        let response = await axios.post(`https://new-social-media-backend.vercel.app/user/resetPassword/${token}`, data);
+        let response = await axios.post(`https://social-media-backend-orpin-ten.vercel.app/user/resetPassword/${token}`, data);
         console.log("Password Reset Successfully");
     } catch (error) {
         console.log(error);
